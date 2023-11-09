@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Section from './Section'
-import Footer from './Footer'
+import Section from '../components/Section'
+import Footer from '../components/Footer'
 
 function Home() {
   return (

@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+*::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
 a {
   text-decoration: none;
 
