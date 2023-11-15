@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import middlemenuReducer from '../features/car/middleMenuSlice';
+import middleMenuReducer from '../features/middleMenu/middleMenuSlice';
+import middleMenuOpenOptionsReducer from '../features/middleMenu/middleMenuOpenOptionsSlice';
 
 export const store = configureStore({
   reducer: {
-    middleMenu: middlemenuReducer,
+    middleMenu: middleMenuReducer,
+    middleMenuOpenOptions: middleMenuOpenOptionsReducer,
   },
 });

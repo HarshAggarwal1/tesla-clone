@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { selectMiddleMenu } from '../features/car/middleMenuSlice';
+import { selectMiddleMenu } from '../features/middleMenu/middleMenuSlice';
 import { useSelector } from 'react-redux';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <Container>
-      <a>
+      <a href="#">
         <LogoImage src="/images/logo.svg" alt="logo"/>
       </a>
       <Menu>
@@ -28,17 +28,28 @@ function Header() {
                 setMiddleMenuOpenStatus(true); 
                 setMiddleMenuOption(MDO);
               }}
-              onMouseLeave={() => {
-                setMiddleMenuOpenStatus(false);
-                setMiddleMenuOption(undefined);
-              }}>
+              // onMouseLeave={() => {
+              //   setMiddleMenuOpenStatus(false);
+              //   setMiddleMenuOption(undefined);
+              // }}
+              >
                 {MDO}
             </MiddleMenuItems>
           ))}
         </div>
 
-      <MiddleMenuItemOpen status={middleMenuOpenStatus}>
+      <MiddleMenuItemOpen 
+        status={middleMenuOpenStatus}
+        onMouseLeave={() => {
+          setMiddleMenuOpenStatus(false);
+          setMiddleMenuOption(undefined);
+        }}
+      >
+        {/* <MiddleMenuOptionsDiv> */}
+        <div>
           <MiddleMenuOptions option={middleMenuOption}/>
+        </div>
+        {/* </MiddleMenuOptionsDiv> */}
       </MiddleMenuItemOpen>
       
       </Menu>
@@ -55,7 +66,7 @@ function Header() {
         <BurgerNavItems>
           <MiddleMenuOptionsHider>
             {middleMenuOptions && middleMenuOptions.map((MDO, index) => (
-              <li key={index}><a href="#">{MDO}</a></li>
+              <li key={index}>{MDO}</li>
             ))}
           </MiddleMenuOptionsHider>
           <li><a href="#">Existing Inventory</a></li>
@@ -177,13 +188,11 @@ const MiddleMenuItemOpen = styled.div`
   left: 0;
   top: 0;
   height: 100px;
-  padding: 72px;
   position: fixed;
   animation: animateDownMiddleMenu 0.25s ease-in-out;
   z-index: 1;
   display: ${props => props.status ? 'flex' : 'none'};
   // display: none;
-  border-radius: 0 0 20px 20px;
   background-color: rgba(255, 255, 255);
 `
 
@@ -209,3 +218,9 @@ const MiddleMenuOptionsHider = styled.div`
     display: none;
   }
 `
+
+// const MiddleMenuOptionsDiv = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   background-color: black;
+// `

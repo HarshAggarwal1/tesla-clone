@@ -36,3 +36,6 @@ a {
   0% {transform: translateY(-100%);}
 }
 
+.VehiclesBuyLink {
+  text-decoration: underline;
+}
