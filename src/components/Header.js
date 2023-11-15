@@ -6,7 +6,7 @@ import { selectCars } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import zIndex from '@mui/material/styles/zIndex';
+import { Fade } from 'react-awesome-reveal';
 
 function Header() {
   const [burgerStatus, setBurgerStatus] = useState(false);
@@ -27,12 +27,15 @@ function Header() {
               onMouseLeave={() => {setMiddleMenuOpenStatus(false)}}>{car}</MiddleMenuItems>
           ))}
         </div>
-        
+
       <MiddleMenuItemOpen status={middleMenuOpenStatus}>
-          <div>
-            Helloo!
-          </div>
+          {/* Here will come the options */}
+          <ul>
+            <li>First Option</li>
+            <li>First Option</li>
+          </ul>
       </MiddleMenuItemOpen>
+      
       </Menu>
       <RightMenu>
         <Globe />
@@ -79,7 +82,7 @@ const Container = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 1;
 `
 
 const Menu = styled.div`
@@ -100,10 +103,10 @@ const Menu = styled.div`
 `
 
 const RightMenu = styled.div`
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 20px;
-  z-index: 2;
 `
 
 const CustomMenu = styled(MenuIcon)`
@@ -126,12 +129,12 @@ const BurgerNav = styled.div`
   right: 0;
   background-color: white;
   width: 300px;
-  z-index: 16;
   list-style: none;
   padding: 20px;
   display: flex;
   flex-direction: column;
   text-align: start;
+  z-index: 2;
   transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)'};
   transition: transform 0.2s ease-in-out;
   li {
@@ -167,15 +170,20 @@ const MiddleMenuItemOpen = styled.div`
   left: 0;
   top: 0;
   height: 100px;
-  padding: 10px;
-  position: absolute;
+  padding: 72px;
+  position: fixed;
+  animation: animateDownMiddleMenu 0.25s ease-in-out;
+  z-index: 1;
   display: ${props => props.status ? 'flex' : 'none'};
   // display: none;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 20px 20px;
   background-color: rgba(255, 255, 255);
 `
 
 const MiddleMenuItems = styled.a`
+  display: fixed;
+  position: relative;
+  z-index: 3;
   text-decoration: none;
   &:hover {
     background-color: rgba(0, 0, 0, .1);
@@ -184,6 +192,7 @@ const MiddleMenuItems = styled.a`
 `
 
 const LogoImage = styled.img`
+  z-index: 3;
+  position: relative;
   object-fit: contain;
-  z-index: 15;
 `
