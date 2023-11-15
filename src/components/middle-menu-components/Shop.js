@@ -2,7 +2,9 @@ import React from 'react'
 
 function Shop () {
   return (
-    <div>
+    <div style={{
+      padding: '60px',
+    }} >
         <h1>Shop Options</h1>
     </div>
   )

@@ -2,7 +2,9 @@ import React from 'react'
 
 function Discover() {
   return (
-    <div>
+    <div style={{
+      padding: '60px',
+    }} >
         <h1>Discover Options</h1>
     </div>
   )
