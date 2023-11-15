@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { selectCars } from '../features/car/carSlice';
+import { selectMiddleMenu } from '../features/car/middleMenuSlice';
 import { useSelector } from 'react-redux';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import { Fade } from 'react-awesome-reveal';
+import MiddleMenuOptions from './MiddleMenuOptions';
 
 function Header() {
   const [burgerStatus, setBurgerStatus] = useState(false);
   const [middleMenuOpenStatus, setMiddleMenuOpenStatus] = useState(false);
-  const cars = useSelector(selectCars);
-  // console.log(cars);
+  const [middleMenuOption, setMiddleMenuOption] = useState(undefined);
+  const middleMenuOptions = useSelector(selectMiddleMenu);
 
   return (
     <Container>
@@ -21,19 +22,23 @@ function Header() {
       </a>
       <Menu>
         <div>
-          {cars && cars.map((car, index) => (
+          {middleMenuOptions && middleMenuOptions.map((MDO, index) => (  // MDO = Middle Menu Options
             <MiddleMenuItems key={index} href="#" 
-              onMouseEnter={() => {setMiddleMenuOpenStatus(true)}}
-              onMouseLeave={() => {setMiddleMenuOpenStatus(false)}}>{car}</MiddleMenuItems>
+              onMouseEnter={() => {
+                setMiddleMenuOpenStatus(true); 
+                setMiddleMenuOption(MDO);
+              }}
+              onMouseLeave={() => {
+                setMiddleMenuOpenStatus(false);
+                setMiddleMenuOption(undefined);
+              }}>
+                {MDO}
+            </MiddleMenuItems>
           ))}
         </div>
 
       <MiddleMenuItemOpen status={middleMenuOpenStatus}>
-          {/* Here will come the options */}
-          <ul>
-            <li>First Option</li>
-            <li>First Option</li>
-          </ul>
+          <MiddleMenuOptions option={middleMenuOption}/>
       </MiddleMenuItemOpen>
       
       </Menu>
@@ -48,9 +53,11 @@ function Header() {
           <CustomClose onClick={() => setBurgerStatus(false)}/>
         </CloseWrapper>
         <BurgerNavItems>
-          {cars && cars.map((car, index) => (
-            <li key={index}><a href="#">{car}</a></li>
-          ))}
+          <MiddleMenuOptionsHider>
+            {middleMenuOptions && middleMenuOptions.map((MDO, index) => (
+              <li key={index}><a href="#">{MDO}</a></li>
+            ))}
+          </MiddleMenuOptionsHider>
           <li><a href="#">Existing Inventory</a></li>
           <li><a href="#">Used Inventory</a></li>
           <li><a href="#">Trade-in</a></li>
@@ -134,7 +141,7 @@ const BurgerNav = styled.div`
   display: flex;
   flex-direction: column;
   text-align: start;
-  z-index: 2;
+  z-index: 5;
   transform: ${props => props.show ? 'translateX(0)' : 'translateX(100%)'};
   transition: transform 0.2s ease-in-out;
   li {
@@ -195,4 +202,10 @@ const LogoImage = styled.img`
   z-index: 3;
   position: relative;
   object-fit: contain;
+`
+
+const MiddleMenuOptionsHider = styled.div`
+  @media (min-width: 767px) {
+    display: none;
+  }
 `

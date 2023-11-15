@@ -73,15 +73,23 @@ const LeftButton = styled.div`
     font-size: 12px;
     cursor: pointer;
     margin: 8px;
+    &:hover {
+      opacity: 1;
+    }
 `
 
 const RightButton = styled(LeftButton)`
     background-color: white;
     color: black;
     opacity: 0.65;
+    &:hover {
+      opacity: 0.8;
+    }
 `
 
 const DownArrow = styled.img`
+    display: ${`flex-inline`};
+    aling-items: center;
     height: 40px;
     animation: animateDown infinite 1.5s;
     overflow-x: hidden;

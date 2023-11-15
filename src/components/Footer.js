@@ -28,7 +28,7 @@ const TheFooter = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #4e4e4e;
+    // background-color: #4e4e4e;
     color: white;
     padding: 20px;
     margin-top: 20px;
@@ -46,7 +46,6 @@ const TheFooter = styled.div`
         li {
             margin: 0 10px;
             a {
-                color: white;
                 font-size: 12px;
                 text-decoration: none;
                 &:hover {

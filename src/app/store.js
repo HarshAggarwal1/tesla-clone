@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import carReducer from '../features/car/carSlice';
+import middlemenuReducer from '../features/car/middleMenuSlice';
 
 export const store = configureStore({
   reducer: {
-    car: carReducer,
+    middleMenu: middlemenuReducer,
   },
 });
