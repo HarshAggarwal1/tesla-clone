@@ -67,6 +67,8 @@ const Container = styled.div`
   gap: 80px;
   border-radius: 0 0 20px 20px;
   background-color: #FFFFFF;
+  animation: animateDownMiddleMenuWithFade 0.65s ease-in-out;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 1);
 `
 
 const VehicleOptions = styled.div`

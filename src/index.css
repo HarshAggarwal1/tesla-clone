@@ -32,10 +32,26 @@ a {
   }
 }
 
+@keyframes animateDownMiddleMenuWithFade {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes animateDownMiddleMenu {
-  0% {transform: translateY(-100%);}
+  0% {
+    transform: translateY(-100%);
+  }
 }
 
 .VehiclesBuyLink {
   text-decoration: underline;
 }
+

@@ -56,19 +56,18 @@ function Header() {
       <RightMenu>
         <Globe />
         <TeslaAccount />
-        <CustomMenu onClick={() => setBurgerStatus(true)}>
-        </CustomMenu>
+        <CustomMenuWrapper>
+          <CustomMenu onClick={() => setBurgerStatus(true)} />
+        </CustomMenuWrapper>
       </RightMenu>
       <BurgerNav show={burgerStatus}>
         <CloseWrapper>
           <CustomClose onClick={() => setBurgerStatus(false)}/>
         </CloseWrapper>
         <BurgerNavItems>
-          <MiddleMenuOptionsHider>
-            {middleMenuOptions && middleMenuOptions.map((MDO, index) => (
-              <li key={index}>{MDO}</li>
-            ))}
-          </MiddleMenuOptionsHider>
+          {middleMenuOptions && middleMenuOptions.map((MDO, index) => (
+            <li key={index}><a>{MDO}</a></li>
+          ))}
           <li><a href="#">Existing Inventory</a></li>
           <li><a href="#">Used Inventory</a></li>
           <li><a href="#">Trade-in</a></li>
@@ -187,9 +186,8 @@ const MiddleMenuItemOpen = styled.div`
   right: 0;
   left: 0;
   top: 0;
-  height: 100px;
+  height: 0px;
   position: fixed;
-  animation: animateDownMiddleMenu 0.25s ease-in-out;
   z-index: 1;
   display: ${props => props.status ? 'flex' : 'none'};
   // display: none;
@@ -213,14 +211,9 @@ const LogoImage = styled.img`
   object-fit: contain;
 `
 
-const MiddleMenuOptionsHider = styled.div`
+const CustomMenuWrapper = styled.div`
+  cursor: pointer;
   @media (min-width: 767px) {
     display: none;
   }
 `
-
-// const MiddleMenuOptionsDiv = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   background-color: black;
-// `
