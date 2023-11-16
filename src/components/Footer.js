@@ -6,8 +6,8 @@ function Footer() {
   return (
     <FooterWrapper>
         <TheFooter>
-            <h2>Tesla Clone © 2023 (Harsh Aggarwal)</h2>
             <ul>
+            <li><a>Tesla Clone © 2023 (Harsh Aggarwal)</a></li>
             <li><a href="#">Privacy & Legal</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Careers</a></li>

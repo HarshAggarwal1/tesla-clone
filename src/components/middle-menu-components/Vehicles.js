@@ -59,7 +59,6 @@ export default Vehicles
 const Container = styled.div`
   padding-top: 150px;
   min-height: 100px;
-  overflow: hidden;
   width: 100vw;
   display: flex;
   flex-direction: row;

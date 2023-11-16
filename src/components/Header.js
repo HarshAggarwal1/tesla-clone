@@ -28,10 +28,16 @@ function Header() {
                 setMiddleMenuOpenStatus(true); 
                 setMiddleMenuOption(MDO);
               }}
-              // onMouseLeave={() => {
-              //   setMiddleMenuOpenStatus(false);
-              //   setMiddleMenuOption(undefined);
-              // }}
+              onClick={() => {
+                if (middleMenuOpenStatus) {
+                  setMiddleMenuOpenStatus(false);
+                  setMiddleMenuOption(undefined);
+                }
+                else {
+                  setMiddleMenuOpenStatus(true);
+                  setMiddleMenuOption(MDO);
+                }}
+              }
               >
                 {MDO}
             </MiddleMenuItems>
@@ -114,7 +120,7 @@ const Menu = styled.div`
     padding: 0 10px;
     flex-wrap: nowrap;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `
@@ -213,7 +219,7 @@ const LogoImage = styled.img`
 
 const CustomMenuWrapper = styled.div`
   cursor: pointer;
-  @media (min-width: 767px) {
+  @media (min-width: 1201px) {
     display: none;
   }
 `
